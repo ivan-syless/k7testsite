@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C A Kesavan | Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Fira+Code:wght@400;500&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep:   #060a14;
+  --ac-teal:   #00c9b1;
+  --ac-blue:   #0a6cff;
+  --ac-pur:    #6c3bff;
+  --tw:        #f0f4f8;
+  --ts:        #b8cfe0;
+  --td:        #6a8fa8;
+  --gold:      #e8c97a;
+  --surf:      rgba(255,255,255,0.04);
+  --brd:       rgba(255,255,255,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg-deep);color:var(--tw);overflow-x:hidden;cursor:none;}
+
+/* Cursor */
+#cur{position:fixed;width:10px;height:10px;border-radius:50%;background:#fff;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .2s,height .2s;}
+#curR{position:fixed;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.25);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);}
+
+/* Background mesh - mimics the reference image */
+.pbg{
+  position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(ellipse 80% 55% at 5%  0%,   rgba(10,108,255,0.28) 0%,transparent 55%),
+    radial-gradient(ellipse 55% 50% at 90% 25%,  rgba(0,201,177,0.22)  0%,transparent 52%),
+    radial-gradient(ellipse 45% 55% at 45% 85%,  rgba(108,59,255,0.18) 0%,transparent 58%),
+    radial-gradient(ellipse 35% 35% at 75% 90%,  rgba(0,201,177,0.12)  0%,transparent 50%),
+    linear-gradient(160deg,#07101e 0%,#060a14 45%,#080612 100%);
+}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:-1;filter:blur(90px);animation:oF 20s ease-in-out infinite;}
+.o1{width:480px;height:480px;background:rgba(0,201,177,.06);top:-60px;left:-80px;animation-duration:22s;}
+.o2{width:380px;height:380px;background:rgba(10,108,255,.07);bottom:5%;right:-60px;animation-duration:28s;animation-delay:-9s;}
+.o3{width:280px;height:280px;background:rgba(108,59,255,.06);top:48%;left:48%;transform:translate(-50%,-50%);animation-duration:32s;animation-delay:-15s;}
+@keyframes oF{0%,100%{transform:translate(0,0)}33%{transform:translate(28px,-18px)}66%{transform:translate(-18px,28px)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(6,10,20,.55);backdrop-filter:blur(24px);border-bottom:1px solid var(--brd);}
+.nlogo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--tw);letter-spacing:.04em;}
+.nlogo span{color:var(--ac-teal);}
+.nlinks{display:flex;align-items:center;gap:28px;}
+.nlinks a{font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--ts);text-decoration:none;transition:color .25s;opacity:.8;}
+.nlinks a:hover{color:var(--tw);opacity:1;}
+
+/* Section base */
+section{padding:110px 8vw 90px;}
+
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:420px 1fr;gap:72px;align-items:end;padding:100px 8vw 160px;position:relative;overflow:visible;}
+.heyebrow{font-family:'Fira Code',monospace;font-size:.76rem;color:var(--ac-teal);letter-spacing:.28em;opacity:.8;margin-bottom:16px;}
+.hname{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.2rem);line-height:1.02;color:var(--tw);margin-bottom:14px;font-weight:600;letter-spacing:.02em;}
+.hname em{font-style:normal;color:var(--ac-teal);font-weight:700;}
+.hrole{font-size:clamp(.78rem,1.2vw,.9rem);font-weight:300;letter-spacing:.18em;color:var(--td);text-transform:uppercase;margin-bottom:28px;}
+.hbio{font-size:clamp(.92rem,1.3vw,1.02rem);line-height:1.88;color:var(--ts);font-weight:300;margin-bottom:34px;}
+.hbio strong{color:var(--tw);font-weight:500;}
+.hpills{display:flex;flex-wrap:wrap;gap:11px;}
+.pill{display:flex;align-items:center;gap:8px;padding:9px 18px;border-radius:100px;border:1px solid var(--brd);background:var(--surf);font-size:.82rem;color:var(--ts);text-decoration:none;transition:all .3s;font-weight:400;}
+.pill svg{width:13px;height:13px;flex-shrink:0;opacity:.65;}
+.pill:hover{border-color:rgba(0,201,177,.4);background:rgba(0,201,177,.06);color:var(--tw);transform:translateY(-2px);}
+
+/* Avatar block — transparent, card removed */
+.havwrap{position:relative;flex-shrink:0;width:100%;overflow:visible;}
+.hav{width:100%;aspect-ratio:3/4;border-radius:0;background:transparent;border:none;display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:visible;}
+.hav::after{display:none;}
+.avinit{font-family:'DM Serif Display',serif;font-size:2.8rem;color:var(--tw);letter-spacing:.05em;}
+.havwrap::before{display:none;}
+.havwrap::after{display:none;}
+
+/* Neon emergence line — anchored to the bottom of .havwrap */
+.hero-line-wrap{
+  position:absolute;
+  bottom:10;
+  left:-10vw;right:-100vw;
+  pointer-events:none;
+  z-index:4;
+  overflow:hidden;
+  padding-top:4px;
+}
+.hero-line{
+  width:100%;
+  height:1.5px;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,201,177,.4) 5%,
+    rgba(0,201,177,1) 25%,
+    rgba(180,255,248,1) 50%,
+    rgba(0,201,177,1) 75%,
+    rgba(0,201,177,.4) 95%,
+    transparent 100%
+  );
+  box-shadow:
+    0 2px  8px 0px rgba(0,201,177,.95),
+    0 4px 22px 2px rgba(0,201,177,.55),
+    0 8px 55px 6px rgba(0,201,177,.22);
+}
+.hero-glow{
+  width:100%;
+  height:180px;
+  background:linear-gradient(180deg,
+    rgba(0,201,177,.28) 0%,
+    rgba(0,201,177,.12) 35%,
+    rgba(0,201,177,.03) 70%,
+    transparent 100%
+  );
+}
+
+.scrollhint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.3;grid-column:1/-1;z-index:8;}
+.scrollhint span{font-family:'Fira Code',monospace;font-size:.6rem;letter-spacing:.3em;color:var(--ts);}
+.scrollline{width:1px;height:38px;background:linear-gradient(180deg,var(--ts),transparent);animation:sP 2s ease-in-out infinite;}
+@keyframes sP{0%,100%{opacity:.35}50%{opacity:.9}}
+
+/* Section headers */
+.shead{margin-bottom:52px;}
+.slabel{font-family:'Fira Code',monospace;font-size:.7rem;letter-spacing:.3em;color:var(--ac-teal);opacity:.7;margin-bottom:10px;}
+.stitle{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,4vw,2.9rem);color:var(--tw);line-height:1.1;}
+.sline{margin-top:14px;width:56px;height:2px;background:linear-gradient(90deg,var(--ac-teal),transparent);border-radius:2px;}
+
+/* WORK CAROUSEL */
+#work{overflow:hidden;}
+.cscene{display:flex;align-items:center;justify-content:center;height:400px;perspective:1400px;position:relative;}
+.wcard{position:absolute;background:var(--surf);border:1px solid var(--brd);border-radius:20px;padding:28px 30px;cursor:pointer;transition:all .55s cubic-bezier(.23,1,.32,1);display:flex;flex-direction:column;gap:12px;overflow:hidden;backdrop-filter:blur(12px);}
+.wcard::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.025),transparent);border-radius:20px;}
+.wcard[data-s="center"]{width:420px;min-height:290px;z-index:10;transform:translateX(0) scale(1);border-color:rgba(0,201,177,.22);box-shadow:0 24px 64px rgba(0,0,0,.55),0 0 0 1px rgba(0,201,177,.1);}
+.wcard[data-s="left"]{width:288px;min-height:220px;z-index:5;transform:translateX(-358px) scale(0.84) rotateY(10deg);opacity:.48;filter:blur(.4px);}
+.wcard[data-s="right"]{width:288px;min-height:220px;z-index:5;transform:translateX(358px) scale(0.84) rotateY(-10deg);opacity:.48;filter:blur(.4px);}
+.wcard[data-s="hl"]{transform:translateX(-620px) scale(.6);opacity:0;pointer-events:none;}
+.wcard[data-s="hr"]{transform:translateX(620px) scale(.6);opacity:0;pointer-events:none;}
+.clabel{font-family:'Fira Code',monospace;font-size:.64rem;letter-spacing:.2em;color:var(--ac-teal);opacity:.7;}
+.ctitle{font-family:'DM Serif Display',serif;font-size:1.08rem;color:var(--tw);line-height:1.3;}
+.cbody{font-size:.88rem;line-height:1.78;color:var(--ts);font-weight:300;flex:1;}
+.ctags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px;}
+.ctag{padding:3px 10px;border-radius:100px;border:1px solid rgba(255,255,255,.09);font-size:.67rem;font-family:'Fira Code',monospace;color:var(--td);}
+.carnav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:26px;}
+.carbtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--brd);background:var(--surf);color:var(--ts);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .3s;}
+.carbtn:hover{border-color:rgba(0,201,177,.35);color:var(--tw);background:rgba(0,201,177,.07);}
+.cdots{display:flex;gap:8px;align-items:center;}
+.cdot{width:6px;height:6px;border-radius:50%;background:var(--td);cursor:pointer;transition:all .3s;}
+.cdot.on{background:var(--tw);width:18px;border-radius:3px;}
+
+/* EDUCATION */
+#education{background:rgba(255,255,255,.01);border-top:1px solid var(--brd);border-bottom:1px solid var(--brd);}
+.eduwrap{max-width:700px;position:relative;}
+.eduwrap::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--ac-teal),var(--ac-pur),transparent);}
+.eduitem{display:flex;gap:34px;padding:0 0 46px 42px;position:relative;opacity:0;transform:translateX(-22px);transition:all .6s ease;}
+.eduitem.vis{opacity:1;transform:translateX(0);}
+.edudot{position:absolute;left:3px;top:7px;width:16px;height:16px;border-radius:50%;background:var(--bg-deep);border:2px solid var(--ac-teal);}
+.edubox{flex:1;padding:22px 26px;background:var(--surf);border:1px solid var(--brd);border-radius:14px;transition:border-color .3s;}
+.edubox:hover{border-color:rgba(0,201,177,.2);}
+.edudeg{font-family:'DM Serif Display',serif;font-size:1.02rem;color:var(--tw);margin-bottom:5px;}
+.edusch{font-size:.86rem;color:var(--td);font-weight:300;margin-bottom:13px;}
+.edumeta{display:flex;flex-wrap:wrap;gap:9px;}
+.educhip{font-family:'Fira Code',monospace;font-size:.67rem;padding:3px 12px;border-radius:100px;background:rgba(0,201,177,.07);border:1px solid rgba(0,201,177,.18);color:var(--ts);}
+
+/* AWARDS */
+#awards{}
+.awardlist{display:flex;flex-direction:column;gap:14px;max-width:720px;}
+.arow{display:flex;align-items:flex-start;gap:26px;padding:20px 24px;border-radius:14px;background:var(--surf);border:1px solid var(--brd);transition:all .4s;opacity:0;transform:translateY(16px);}
+.arow.vis{opacity:1;transform:translateY(0);}
+.arow:hover{border-color:rgba(0,201,177,.15);background:rgba(0,201,177,.02);}
+.anum{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--ac-teal);opacity:.22;line-height:1;flex-shrink:0;min-width:30px;}
+.attl{font-size:.98rem;font-weight:500;color:var(--tw);margin-bottom:4px;}
+.adt{font-family:'Fira Code',monospace;font-size:.67rem;color:var(--td);letter-spacing:.05em;}
+
+/* SKILLS */
+#skills{border-top:1px solid var(--brd);}
+.skg{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:11px;margin-bottom:48px;}
+.skcard{padding:17px 19px;background:var(--surf);border:1px solid var(--brd);border-radius:12px;transition:all .3s;opacity:0;transform:translateY(14px) scale(.98);}
+.skcard.vis{opacity:1;transform:translateY(0) scale(1);}
+.skcard:hover{border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.055);transform:translateY(-2px);}
+.skname{font-size:.88rem;font-weight:500;color:var(--tw);}
+.skcat{font-family:'Fira Code',monospace;font-size:.62rem;color:var(--td);margin-top:4px;letter-spacing:.08em;}
+.toolsblk{margin-top:36px;}
+.toolslbl{font-family:'Fira Code',monospace;font-size:.7rem;letter-spacing:.2em;color:var(--td);margin-bottom:14px;}
+.toolsrow{display:flex;flex-wrap:wrap;gap:8px;}
+.tpill{padding:5px 14px;border-radius:100px;border:1px solid var(--brd);background:var(--surf);font-size:.79rem;color:var(--ts);transition:all .3s;opacity:0;}
+.tpill.vis{opacity:1;}
+.tpill:hover{border-color:rgba(255,255,255,.18);color:var(--tw);background:rgba(255,255,255,.055);}
+
+/* CONNECT */
+#connect{min-height:62vh;display:flex;flex-direction:column;justify-content:center;position:relative;}
+.chead{font-family:'DM Serif Display',serif;font-size:clamp(2.1rem,6vw,4.3rem);color:var(--tw);line-height:1.1;margin-bottom:14px;}
+.chead em{font-style:italic;color:var(--ac-teal);}
+.csub{font-size:.98rem;color:var(--td);font-weight:300;margin-bottom:36px;max-width:460px;line-height:1.75;}
+.crow{display:flex;flex-wrap:wrap;gap:12px;}
+.cbtn{display:flex;align-items:center;gap:10px;padding:12px 22px;border-radius:100px;text-decoration:none;font-size:.86rem;font-weight:500;letter-spacing:.04em;transition:all .3s;border:1px solid var(--brd);background:var(--surf);color:var(--ts);}
+.cbtn svg{width:15px;height:15px;flex-shrink:0;}
+.cbtn:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:var(--tw);transform:translateY(-2px);}
+.cbtn.pri{background:rgba(0,201,177,.1);border-color:rgba(0,201,177,.3);color:#9de8de;}
+.cbtn.pri:hover{background:rgba(0,201,177,.18);border-color:rgba(0,201,177,.55);}
+.cbtn.gcv{background:rgba(10,108,255,.08);border-color:rgba(10,108,255,.3);color:#7aaeff;}
+.cbtn.gcv:hover{background:rgba(10,108,255,.16);border-color:rgba(10,108,255,.55);}
+
+footer{text-align:center;padding:26px;border-top:1px solid var(--brd);font-family:'Fira Code',monospace;font-size:.67rem;color:var(--td);letter-spacing:.1em;opacity:.55;}
+
+/* Reveal */
+.rev{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
+.rev.vis{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  #hero{grid-template-columns:280px 1fr;gap:40px;}
+}
+@media(max-width:680px){
+  #hero{grid-template-columns:1fr;text-align:center;padding:100px 5vw 68px;}
+  .hpills{justify-content:center;}
+  .havwrap{width:200px;margin:0 auto;}
+  nav{padding:14px 20px;}
+  .nlinks{gap:12px;}
+  .nlinks a{font-size:.68rem;}
+  section{padding:88px 5vw 68px;}
+  .wcard[data-s="left"]{transform:translateX(-210px) scale(.76) rotateY(8deg);}
+  .wcard[data-s="right"]{transform:translateX(210px) scale(.76) rotateY(-8deg);}
+  .wcard[data-s="center"]{width:87vw;max-width:350px;}
+}
+</style>
+</head>
+<body>
+<div class="pbg"></div>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+<div id="cur"></div>
+<div id="curR"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nlogo">C A <span>Kesavan</span></div>
+  <div class="nlinks">
+    <a href="#hero">Home</a>
+    <a href="#work">Research</a>
+    <a href="#education">Education</a>
+    <a href="#awards">Awards</a>
+    <a href="#skills">Skills</a>
+    <a href="#connect">Connect</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="havwrap rev" style="transition-delay:.18s;position:relative;z-index:6;">
+    <div class="hav"><img src="https://lh3.googleusercontent.com/d/1oTIiP5ORdgyTgcf5hcKB1GVVmbJHyKau" alt="C A Kesavan" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" referrerpolicy="no-referrer"></div>
+    <!-- Neon emergence line — sits at the exact bottom of the image -->
+    <div class="hero-line-wrap">
+      <div class="hero-line"></div>
+      <div class="hero-glow"></div>
+    </div>
+  </div>
+  <div class="rev" style="align-self:center;">
+    <div class="heyebrow">// Researcher · Chennai, India</div>
+    <h1 class="hname">C A<br><em>Kesavan</em></h1>
+    <div class="hrole">Organic Chemistry &nbsp;·&nbsp; Electrochemistry &nbsp;·&nbsp; Green Energy</div>
+    <p class="hbio">Passionate about advancing <strong>chemical synthesis into real-world technology transfer</strong>, with 3.5 years designing advanced <strong>electrochemical &amp; photochemical electrolyzers</strong>. Pioneered a universal electrolyzer integrating PEM systems, flow cells, and fuel cells — seeking <strong>PhD research in green technologies</strong>.</p>
+    <div class="hpills">
+      <a href="mailto:chemkesav@gmail.com" class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        chemkesav@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/chemkesav" target="_blank" class="pill">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin/chemkesav
+      </a>
+      <a href="tel:+917550266287" class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-5.99-5.99 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91 75502 66287
+      </a>
+    </div>
+  </div>
+  <div class="scrollhint">
+    <span>SCROLL</span>
+    <div class="scrollline"></div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="shead rev">
+    <div class="slabel">// 02 — Research Work</div>
+    <h2 class="stitle">Projects</h2>
+    <div class="sline"></div>
+  </div>
+  <div class="cscene" id="cs"></div>
+  <div class="carnav">
+    <button class="carbtn" onclick="slide(-1)">&#8592;</button>
+    <div class="cdots" id="cdots"></div>
+    <button class="carbtn" onclick="slide(1)">&#8594;</button>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="shead rev">
+    <div class="slabel">// 03 — Academic Background</div>
+    <h2 class="stitle">Education</h2>
+    <div class="sline"></div>
+  </div>
+  <div class="eduwrap">
+    <div class="eduitem">
+      <div class="edudot"></div>
+      <div class="edubox">
+        <div class="edudeg">Master's in Organic Chemistry</div>
+        <div class="edusch">SRM Institute of Science and Technology, Kattankulathur</div>
+        <div class="edumeta">
+          <span class="educhip">2024 – 2026</span>
+          <span class="educhip">CGPA 7.48</span>
+          <span class="educhip">Expected May 2026</span>
+        </div>
+      </div>
+    </div>
+    <div class="eduitem" style="transition-delay:.12s">
+      <div class="edudot" style="border-color:var(--ac-pur)"></div>
+      <div class="edubox">
+        <div class="edudeg">Bachelor's in Chemistry</div>
+        <div class="edusch">SRM Institute of Science and Technology, Chennai</div>
+        <div class="edumeta">
+          <span class="educhip" style="border-color:rgba(108,59,255,.3);background:rgba(108,59,255,.07)">2021 – 2024</span>
+          <span class="educhip" style="border-color:rgba(108,59,255,.3);background:rgba(108,59,255,.07)">CGPA 7.38</span>
+          <span class="educhip" style="border-color:rgba(108,59,255,.3);background:rgba(108,59,255,.07)">First Class</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="shead rev">
+    <div class="slabel">// 04 — Conferences &amp; Events</div>
+    <h2 class="stitle">Awards &amp; Events</h2>
+    <div class="sline"></div>
+  </div>
+  <div class="awardlist">
+    <div class="arow"><div class="anum">01</div><div><div class="attl">International Conference on Green Hydrogen and Energy Technology (ICHET 2026)</div><div class="adt">08 – 10 January 2026</div></div></div>
+    <div class="arow" style="transition-delay:.1s"><div class="anum">02</div><div><div class="attl">National Symposium on Electrochemical Science and Technology (NSEST-2025)</div><div class="adt">28 – 29 August 2025</div></div></div>
+    <div class="arow" style="transition-delay:.2s"><div class="anum">03</div><div><div class="attl">Active Research Contributor — SEER Laboratory, SRMIST</div><div class="adt">Under Dr Karthikeyan S · Ongoing</div></div></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="shead rev">
+    <div class="slabel">// 05 — Capabilities</div>
+    <h2 class="stitle">Skills</h2>
+    <div class="sline"></div>
+  </div>
+  <div class="skg" id="skg"></div>
+  <div class="toolsblk rev">
+    <div class="toolslbl">// Software Tools</div>
+    <div class="toolsrow" id="swrow"></div>
+  </div>
+  <div class="toolsblk rev" style="margin-top:26px">
+    <div class="toolslbl">// Instruments</div>
+    <div class="toolsrow" id="insrow"></div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="shead rev"><div class="slabel">// 06 — Get in Touch</div></div>
+  <h2 class="chead rev">Let's build the<br><em>future together.</em></h2>
+  <p class="csub rev">Open to PhD collaborations, research discussions, and green energy projects. Reach out through any channel below.</p>
+  <div class="crow rev">
+    <a href="mailto:chemkesav@gmail.com" class="cbtn pri">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email Me
+    </a>
+    <a href="https://linkedin.com/in/chemkesav" target="_blank" class="cbtn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn
+    </a>
+    <a href="tel:+917550266287" class="cbtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-5.99-5.99 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 75502 66287
+    </a>
+    <a href="#" class="cbtn gcv" onclick="alert('Replace this link with your CV PDF URL.')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Download CV
+    </a>
+  </div>
+</section>
+
+<footer>&copy; 2026 C A Kesavan &nbsp;·&nbsp; Chennai, India &nbsp;·&nbsp; chemkesav@gmail.com</footer>
+
+<script>
+// Cursor
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function t(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(t);})();
+document.querySelectorAll('a,button,.wcard,.hbg').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';});el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';});});
+
+// Carousel
+const cards=[
+  {label:"Master's Thesis · SEER Lab",title:"Depolymerization of PET for Sustainable Energy Production",body:"Alkaline depolymerization of polyethylene terephthalate (PET) to recover terephthalic acid monomers. Kinetics monitored via UV-Vis spectroscopy; monomer used as organic linker to construct MOFs as efficient OER electrocatalysts.",tags:["MOF Synthesis","OER","PET Recycling","UV-Vis","FTIR"]},
+  {label:"Innovation · Patent Pending",title:"Advanced Multifunctional CO₂ Electrolyzer",body:"Universal electrolyzer switchable between PEM systems, flow cells, and fuel cells — operates under high-pressure in-situ conditions with integrated GC sampling. Developed at SEER Laboratory under Dr Karthikeyan S.",tags:["CO₂RR","PEM Cell","Flow Cell","High Pressure","Patent Pending"]},
+  {label:"Research Domain",title:"Hydrogen, Oxygen & Nitrate Reactions",body:"Extensive work on HER, OER, and Urea Oxidation Reaction (UOR), alongside electrocatalytic and photocatalytic CO₂ reduction and nitrate reduction for sustainable energy and environmental applications.",tags:["HER","OER","UOR","eNO3RR","pNO3RR","Photocatalysis"]},
+];
+let cur2=1;
+const gS=i=>{const d=(i-cur2+cards.length)%cards.length;if(d===0)return'center';if(d===1)return'right';if(d===cards.length-1)return'left';return d>1&&i<cur2?'hl':'hr';};
+function buildC(){
+  const cs=document.getElementById('cs');cs.innerHTML='';
+  cards.forEach((c,i)=>{
+    const el=document.createElement('div');el.className='wcard';el.dataset.i=i;el.dataset.s=gS(i);
+    el.innerHTML=`<div class="clabel">${c.label}</div><div class="ctitle">${c.title}</div><div class="cbody">${c.body}</div><div class="ctags">${c.tags.map(t=>`<span class="ctag">${t}</span>`).join('')}</div>`;
+    el.addEventListener('click',()=>{const s=el.dataset.s;if(s==='left')slide(-1);else if(s==='right')slide(1);});
+    cs.appendChild(el);
+  });
+  buildD();
+}
+function upd(){document.querySelectorAll('.wcard').forEach(el=>el.dataset.s=gS(+el.dataset.i));document.querySelectorAll('.cdot').forEach((d,i)=>d.classList.toggle('on',i===cur2));}
+function slide(dir){cur2=(cur2+dir+cards.length)%cards.length;upd();}
+function buildD(){const d=document.getElementById('cdots');d.innerHTML='';cards.forEach((_,i)=>{const dot=document.createElement('div');dot.className='cdot'+(i===cur2?' on':'');dot.onclick=()=>{cur2=i;upd();};d.appendChild(dot);});}
+buildC();
+let tx=0;
+document.getElementById('cs').addEventListener('touchstart',e=>tx=e.touches[0].clientX);
+document.getElementById('cs').addEventListener('touchend',e=>{if(Math.abs(e.changedTouches[0].clientX-tx)>40)slide(e.changedTouches[0].clientX<tx?1:-1);});
+
+// Skills
+[{n:'Electrochemical Electrolyzer Design',c:'Engineering'},{n:'Photochemical Electrolyzer Design',c:'Engineering'},{n:'PEM / Flow Cell Design',c:'Engineering'},{n:'Industrial Scalable Electrolyzer',c:'Engineering'},{n:'MOF Synthesis',c:'Chemistry'},{n:'HER / OER / UOR Research',c:'Electrochemistry'},{n:'CO₂ & Nitrate Reduction',c:'Catalysis'},{n:'3D Design — PRO Level',c:'Design'},{n:'3D Animation — PRO Level',c:'Design'},{n:'Micro & Macro 3D Printing',c:'Fabrication'},{n:'2D & 3D Sketching',c:'Design'},{n:'3D Engraving & Simulations',c:'Fabrication'}].forEach((s,i)=>{const el=document.createElement('div');el.className='skcard';el.style.transitionDelay=(i*.045)+'s';el.innerHTML=`<div class="skname">${s.n}</div><div class="skcat">${s.c}</div>`;document.getElementById('skg').appendChild(el);});
+['Blender','Autodesk Fusion 360','Autodesk Maya','Adobe Photoshop','Adobe Premiere Pro','GIMP','PhotoScape X','MS Excel','MS Word','MS PowerPoint'].forEach((t,i)=>{const el=document.createElement('span');el.className='tpill';el.style.transitionDelay=(i*.04)+'s';el.textContent=t;document.getElementById('swrow').appendChild(el);});
+['UV-Vis Spectrophotometer','Electrochemical Workstation','FE-SEM','P-XRD'].forEach((t,i)=>{const el=document.createElement('span');el.className='tpill';el.style.transitionDelay=(i*.07)+'s';el.textContent=t;document.getElementById('insrow').appendChild(el);});
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.1});
+document.querySelectorAll('.rev,.eduitem,.arow,.skcard,.tpill').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
